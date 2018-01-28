@@ -8,6 +8,7 @@ def parse_date_to_train_test(filename, train_yrs, test_yrs):
     dataframe
 
     output:
+    data belonging to test and train years
 
     '''
     data = pd.read_csv(filename, parse_dates=['Date'], index_col='Date')
