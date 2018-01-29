@@ -18,6 +18,16 @@ def get_train_bouys(filename, buoyID):
     data = pd.read_csv(filename, parse_dates=['Date'], index_col='Date')
     data_temp = data[data['ID'] == buoyID]
     data_X = data_temp.interpolate(method='linear', axis=0).bfill()
+
+    tz = pytz.timezone('US/Pacific')
+    data_X.index = data_X.index.tz_localize('UTC').tz_convert(tz)
+    data_X['TempDate'] = data_X.index
+    data_X['YY'] = data_X['TempDate'].apply(lambda x: x.year)
+    data_X['MM'] = data_X['TempDate'].apply(lambda x: x.month)
+    data_X['DD'] = data_X['TempDate'].apply(lambda x: x.day)
+    data_X['hh'] = data_X['TempDate'].apply(lambda x: x.hour)
+    data_X.drop(columns='TempDate')
+
     return data_X
 
 def get_test_bouys(filename, buoyID):
@@ -150,9 +160,11 @@ if __name__ == '__main__':
     data_train_46059_t = round_time_y(data_train_46059_t)
 
     #data_X_y_46005 = pd.merge(data_train_46005_t, data_test_46026, left_on='time_y_hr', right_index=True)
-    data_X_y_46059 = pd.merge(data_train_46059_t, data_labels_46026_hr, how='left', left_on='time_y_hr', right_on='id')
+    data_X_y_46059 = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr', right_on='id')
 
     #data_X_y_46005.to_csv('data_X_y_46005_train.csv')
-    data_X_y_46059.to_csv('data_X_y_46059_train_012818.csv', index=False)
+    data_X_y_46059.to_csv('data_X_y_46059_train_012918.csv', index=False)
 
     print('Processing complete')
