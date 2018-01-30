@@ -3,6 +3,7 @@ import numpy as np
 from math import pi
 import matplotlib.pyplot as plt
 import datetime
+from pytz import timezone
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -17,16 +18,18 @@ def get_train_bouys(filename, buoyID):
     '''
     data = pd.read_csv(filename, parse_dates=['Date'], index_col='Date')
     data_temp = data[data['ID'] == buoyID]
-    data_X = data_temp.interpolate(method='linear', axis=0).bfill()
+    data_X = data_temp.interpolate(method ='linear', axis=0).bfill()
 
-    tz = pytz.timezone('US/Pacific')
+    tz = timezone('US/Pacific')
     data_X.index = data_X.index.tz_localize('UTC').tz_convert(tz)
     data_X['TempDate'] = data_X.index
     data_X['YY'] = data_X['TempDate'].apply(lambda x: x.year)
     data_X['MM'] = data_X['TempDate'].apply(lambda x: x.month)
     data_X['DD'] = data_X['TempDate'].apply(lambda x: x.day)
     data_X['hh'] = data_X['TempDate'].apply(lambda x: x.hour)
-    data_X.drop(columns='TempDate')
+    data_X.drop(columns='TempDate', inplace = True)
+
+    data_X.index = data_X.index.tz_localize(None)
 
     return data_X
 
