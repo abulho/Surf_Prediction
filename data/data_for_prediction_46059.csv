@@ -1,5 +1,7 @@
 #YY  MM DD hh mm WDIR WSPD GST  WVHT   DPD   APD MWD   PRES  ATMP  WTMP  DEWP  VIS PTDY  TIDE
 #yr  mo dy hr mn degT m/s  m/s     m   sec   sec degT   hPa  degC  degC  degC  nmi  hPa    ft
+2018 01 31 22 40  90  3.0  4.0    MM    MM    MM  MM 1023.5  12.9  14.0   9.5   MM   MM    MM
+2018 01 31 22 30  80  4.0  6.0    MM    MM    MM  MM 1023.6  12.8  14.0   9.5   MM   MM    MM
 2018 01 31 22 20  90  4.0  6.0    MM    MM    MM  MM 1023.1  12.8  14.0   9.4   MM   MM    MM
 2018 01 31 22 10  90  3.0  5.0    MM    MM    MM  MM 1023.7  12.8  14.0   9.4   MM   MM    MM
 2018 01 31 22 00  90  2.0  3.0    MM    MM    MM  MM 1023.9  12.9  14.0   9.3   MM -1.7    MM

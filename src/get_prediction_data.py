@@ -102,7 +102,7 @@ def round_time_y(dataframe):
     return dataframe
 
 if __name__ == '__main__':
-    get_prediction_data()
+    get_prediction_data(46059)
     prediction_df = clean_prediction_data('../data/data_for_prediction.csv')
     prediction_df = adding_speed_col(prediction_df, 650)
     prediction_df = add_time_delta(prediction_df)
