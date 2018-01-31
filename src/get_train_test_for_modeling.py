@@ -1,6 +1,8 @@
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import datetime
 plt.style.use('ggplot')
@@ -54,9 +56,7 @@ if __name__ == '__main__':
 
     cols_to_keep = ['YY_x', 'MM_x', 'DD_x', 'hh_x', 'WD_x', 'WSPD_x',
                     'GST_x', 'WVHT_x', 'DPD_x', 'APD_x', 'MWD_x', 'BAR_x', 'ATMP_x',
-                    'WTMP_x', 'DEWP_x', 'ID_x', 't_arrive', 'YY_y',
-                    'MM_y', 'DD_y', 'hh_y', 'WD_y', 'WSPD_y','GST_y', 'MWD_y', 'BAR_y', 'ATMP_y',
-                    'WTMP_y', 'DEWP_y', 'ID_y', 'WaterLevel','WVHT_y']
+                    'WTMP_x', 'DEWP_x', 'ID_x', 't_arrive', 'WVHT_y']
 
     train_yrs = [1995, 1996, 1997, 1998, 1999, 2000, 2003, 2004, 2006, 2007]
     test_yrs  = [2008]

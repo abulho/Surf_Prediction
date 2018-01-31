@@ -5,7 +5,7 @@ from datetime import datetime
 from pytz import timezone
 from format_train_test import *
 
-def get_prediction_data():
+def get_prediction_data(buoyID):
     '''
     input:
     takes in the csv file with buoy number and date start of data and date end of data
@@ -15,10 +15,10 @@ def get_prediction_data():
 
     '''
 
-    url = "http://www.ndbc.noaa.gov/data/realtime2/46026.txt"
+    url = "http://www.ndbc.noaa.gov/data/realtime2/{}.txt".format(buoyID)
     content = requests.get(url)
 
-    with open('../data/data_for_prediction.csv', 'w') as f:
+    with open('../data/data_for_prediction_{}.csv'.format(46059), 'w') as f:
         f.write(content.text)
 
 def clean_prediction_data(filename):
@@ -37,7 +37,8 @@ def clean_prediction_data(filename):
     new_date = [datetime.datetime(*x) for x in dates_temp]
     data['Date'] = new_date
 
-    pred_test = data[data != 'MM']
+    allcols = data.columns
+    pred_test = data[data[allcols] != 'MM']
     cols_to_numerics = ['WDIR', 'WSPD', 'GST', 'WVHT', 'DPD','APD', 'MWD',
                         'PRES', 'ATMP', 'WTMP', 'DEWP', 'VIS', 'PTDY', 'TIDE']
     pred_test[cols_to_numerics] = pred_test[cols_to_numerics].apply(pd.to_numeric)
