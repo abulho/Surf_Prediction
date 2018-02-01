@@ -18,7 +18,7 @@ def get_prediction_data(buoyID):
     url = "http://www.ndbc.noaa.gov/data/realtime2/{}.txt".format(buoyID)
     content = requests.get(url)
 
-    with open('../data/data_for_prediction_{}.csv'.format(46059), 'w') as f:
+    with open('../data/data_for_prediction_{}.csv'.format(buoyID), 'w') as f:
         f.write(content.text)
 
 def clean_prediction_data(filename):
