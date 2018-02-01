@@ -37,8 +37,7 @@ def clean_prediction_data(filename):
     new_date = [datetime.datetime(*x) for x in dates_temp]
     data['Date'] = new_date
 
-    allcols = data.columns
-    pred_test = data[data[allcols] != 'MM']
+    pred_test = data.replace('MM', np.nan)
     cols_to_numerics = ['WDIR', 'WSPD', 'GST', 'WVHT', 'DPD','APD', 'MWD',
                         'PRES', 'ATMP', 'WTMP', 'DEWP', 'VIS', 'PTDY', 'TIDE']
     pred_test[cols_to_numerics] = pred_test[cols_to_numerics].apply(pd.to_numeric)
