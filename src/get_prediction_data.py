@@ -108,7 +108,7 @@ if __name__ == '__main__':
     prediction_df = add_time_delta(prediction_df)
     prediction_df = add_time_y(prediction_df)
     prediction_df = round_time_y(prediction_df)
-    pd.to_csv('data/prediction_df.csv')
+    prediction_df.to_csv('../data/prediction_df.csv')
 
     cols_to_keep = ['YY', 'MM', 'DD', 'hh', 'WDIR', 'WSPD', 'GST', 'WVHT', 'DPD',
                     'APD', 'PRES', 'ATMP', 'WTMP', 'DEWP', 't_arrive']

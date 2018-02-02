@@ -104,7 +104,7 @@ if __name__ == '__main__':
     buoyID = 46026
     get_prediction_data(buoyID)
     print('Getting Prediction Data from {}'.format(buoyID))
-    #prediction_df = clean_prediction_data('../data/data_for_prediction_{}.csv'.format(buoyID))
+    prediction_df_neashore = clean_prediction_data('../data/data_for_prediction_{}.csv'.format(buoyID))
     #prediction_df = adding_speed_col(prediction_df, 650)
     #prediction_df = add_time_delta(prediction_df)
     #prediction_df = add_time_y(prediction_df)
