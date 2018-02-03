@@ -79,7 +79,7 @@ def adding_speed_col(dataframe, distance):
     df['APD'] = df['APD'].interpolate(method='linear', axis=0).bfill()
 
     # speed in km/hr
-    speed = ((9.81 * df['APD']) / (2*pi)) * 3.6
+    speed = ((9.81 * df['APD']**2) / (2*pi)) * 3.6
     arrive = distance / speed
     df['t_arrive'] = arrive
     return df

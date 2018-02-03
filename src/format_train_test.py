@@ -164,12 +164,47 @@ if __name__ == '__main__':
     #rounding time
     data_train_46059_t = round_time_y(data_train_46059_t)
 
+    # getting the prediction time past the wave arrival times
+    predict_hrs = [hr for hr in range(24,166,24)]
+    for hr in predict_hrs:
+        data_train_46059_t['time_delta_{}'.format(str(hr))] = data_train_46059_t['t_arrive'].apply(lambda x: datetime.timedelta((x+hr)/24))
+        data_train_46059_t['time_y_{}'.format(str(hr))] = data_train_46059_t.index + data_train_46059_t['time_delta_{}'.format(hr)]
+        data_train_46059_t['time_y_hr_{}'.format(hr)]  = data_train_46059_t['time_y_{}'.format(hr)].apply(lambda dt: datetime.datetime(dt.year,
+                                                                                                 dt.month,
+                                                                                                 dt.day,
+                                                                                                 dt.hour,
+                                                                                                 0,0))
+
     #data_X_y_46005 = pd.merge(data_train_46005_t, data_test_46026, left_on='time_y_hr', right_index=True)
-    data_X_y_46059 = pd.merge(data_train_46059_t,
+    data_X_y_46059_hr = pd.merge(data_train_46059_t,
                               data_labels_46026_hr,
                               how='left', left_on='time_y_hr', right_on='id')
+    data_X_y_46059_24hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_24', right_on='id')
+    data_X_y_46059_48hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_48', right_on='id')
+    data_X_y_46059_72hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_72', right_on='id')
+    data_X_y_46059_96hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_96', right_on='id')
+    data_X_y_46059_120hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_120', right_on='id')
+    data_X_y_46059_144hr = pd.merge(data_train_46059_t,
+                              data_labels_46026_hr,
+                              how='left', left_on='time_y_hr_144', right_on='id')
 
     #data_X_y_46005.to_csv('data_X_y_46005_train.csv')
-    data_X_y_46059.to_csv('data_X_y_46059_train_012918.csv', index=False)
+    data_X_y_46059_hr.to_csv('data_X_y_46059_hr.csv', index=False)
+    data_X_y_46059_24hr.to_csv('data_X_y_46059_24hr.csv', index=False)
+    data_X_y_46059_48hr.to_csv('data_X_y_46059_48hr.csv', index=False)
+    data_X_y_46059_72hr.to_csv('data_X_y_46059_72hr.csv', index=False)
+    data_X_y_46059_96hr.to_csv('data_X_y_46059_96hr.csv', index=False)
+    data_X_y_46059_120hr.to_csv('data_X_y_46059_120hr.csv', index=False)
+    data_X_y_46059_144hr.to_csv('data_X_y_46059_144hr.csv', index=False)
 
     print('Processing complete')

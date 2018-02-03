@@ -59,7 +59,7 @@ def return_real_time_prediction(pickle_model_name):
 def make_plot_times():
     dt = date.today()
     time_start = dt + timedelta(hours = 24)
-    time_end = dt + timedelta(hours = 168)
+    time_end = dt + timedelta(hours = 48)
 
     return time_start, time_end
 
@@ -71,12 +71,18 @@ def make_dash_board():
 
     myFmt = mdates.DateFormatter('%H:%S')
 
+    t1 = time_start.strftime('%Y%m%d')
+    t2 = time_end.strftime('%Y%m%d')
+
+    print(t1)
+    print(t2)
+
     fig, ax = plt.subplots(figsize=(18,6))
-    ax.bar(bar_yy[time_start:time_end]['y_hat'].index,
-           bar_yy[time_start:time_end]['y_hat'].values)
+    ax.bar(bar_yy[t1:t2]['y_hat'].index,
+           bar_yy[t1:t2]['y_hat'].values)
 
     plt.savefig('THIS_IS_A_TEST.png')
-    
+
     return bar_yy
 if __name__ == "__main__":
     print(make_dash_board())
