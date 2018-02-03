@@ -10,10 +10,10 @@ data_for_prediction_46026.csv
 gbr_1.pkl
 gbr_2.pkl
 data_X_y_46005_train.csv
-data_X_y_46059_hrs.csv
-data_X_y_46059_24hrs.csv
-data_X_y_46059_48hrs.csv
-data_X_y_46059_72hrs.csv
-data_X_y_46059_96hrs.csv
-data_X_y_46059_120hrs.csv
-data_X_y_46059_144hrs.csv
+data_X_y_46059_hr.csv
+data_X_y_46059_24hr.csv
+data_X_y_46059_48hr.csv
+data_X_y_46059_72hr.csv
+data_X_y_46059_96hr.csv
+data_X_y_46059_120hr.csv
+data_X_y_46059_144hr.csv
