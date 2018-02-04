@@ -42,9 +42,9 @@ def grid_fit(x_train, y_train, x_test, y_test, param_grid, set_num):
         processes = [mp.Process(target = model.fit, args=(x_train,y_train)) for model in models]
 
         for p in processes:
-            p.start
+            p.start()
         for p in processes:
-            p.join
+            p.join()
 
         N_ESTIMATORS = 1000
         N_FOLDS = 10
@@ -88,5 +88,11 @@ if __name__ == '__main__':
     processes = [mp.Process(target = grid_fit,
                             args=(data[0], data[1], data[2], data[3], param_grid, set_num))
                             for set_num, data in enumerate(zip(X_train_sets, y_train_sets, X_test_sets, y_test_sets))]
+
+    for p in processes:
+        p.start()
+
+    for p in processes:
+        p.join()
 
     print(time.time()-start)
