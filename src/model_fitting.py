@@ -6,6 +6,7 @@ import pandas as pd
 import pickle
 from sklearn.metrics import mean_squared_error, r2_score
 from get_train_test_for_modeling import *
+import multiprocessing
 
 def model(X_train, y_train):
 
@@ -75,14 +76,21 @@ def get_X_y_for_hr(hour):
 
     return X_train, X_test, y_train, y_test
 
+def model_fit_and_pickle(suffix):
+    print('Fitting and Pickling {} Model'.format(suffix))
+    pickle_name = 'gbr_' + suffix + '.pkl'
+    X_train, X_test, y_train, y_test = get_X_y_for_hr(suffix)
+    gbr = model(X_train, y_train)
+    pickle_model(pickle_name, gbr)
 
-if __name__ == '__main__':
+    return gbr
+
+def main():
     suffix = ['hr', '24hr', '48hr', '72hr', '96hr', '120hr', '144hr']
     prefix = 'data_X_y_46059_'
+    n_jobs = multiprocessing.cpu_count()
+    pool = multiprocessing.Pool(processes = n_jobs)
+    models = pool.map(model_fit_and_pickle, suffix)
 
-    for item in suffix:
-        print('Fitting and Pickling {} Model'.format(item))
-        pickle_name = 'gbr_' + item + '.pkl'
-        X_train, X_test, y_train, y_test = get_X_y_for_hr(item)
-        gbr = model(X_train, y_train)
-        pickle_model(pickle_name, gbr)
+if __name__ == '__main__':
+    main()
