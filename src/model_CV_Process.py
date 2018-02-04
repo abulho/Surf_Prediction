@@ -13,6 +13,7 @@ from sklearn.ensemble import (GradientBoostingRegressor,
                               GradientBoostingClassifier,
                               AdaBoostClassifier,
                               RandomForestClassifier)
+import time
 
 def make_cv_data_sets(dataframe, cols_to_keep, allyrs):
     X_train_sets = []
@@ -69,6 +70,7 @@ def grid_fit(x_train, y_train, x_test, y_test, param_grid):
         return train_scores, test_scores
 
 if __name__ == '__main__':
+    start = time.time()
     filename = 'data_X_y_46059_hr.csv'
     Xy_df = get_Xy_data(filename)
 
@@ -85,3 +87,4 @@ if __name__ == '__main__':
     processes = [mp.Process(target = grid_fit,
                             args=(x_train, y_train, x_test, y_test, param_grid))
                             for x_train, y_train, x_test, y_test in zip(X_train_sets, y_train_sets, X_test_sets, y_test_sets)]
+    print(time.time()-start
