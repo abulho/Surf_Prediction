@@ -37,7 +37,7 @@ def grid_fit(x_train, y_train, x_test, y_test, param_grid, set_num):
                                             max_depth = td,
                                             learning_rate = 0.0001,
                                             subsample = 0.5,
-                                            loss ='ls') for td in param_grid.values()[0]]
+                                            loss ='ls') for td in param_grid['tree_depth']]
 
         processes = [mp.Process(target = model.fit, args=(x_train,y_train)) for model in models]
 
