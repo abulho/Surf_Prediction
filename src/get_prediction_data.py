@@ -113,4 +113,14 @@ if __name__ == '__main__':
     cols_to_keep = ['YY', 'MM', 'DD', 'hh', 'WDIR', 'WSPD', 'GST', 'WVHT', 'DPD',
                     'APD', 'PRES', 'ATMP', 'WTMP', 'DEWP', 't_arrive']
 
+    predict_hrs = [hr for hr in range(24,166,24)]
+    for hr in predict_hrs:
+        prediction_df['time_delta_{}'.format(str(hr))] = prediction_df['t_arrive'].apply(lambda x: datetime.timedelta((x+hr)/24))
+        prediction_df['time_y_{}'.format(str(hr))] = prediction_df.index + data_train_46059_t['time_delta_{}'.format(hr)]
+        prediction_df['time_y_hr_{}'.format(hr)]  = prediction_df['time_y_{}'.format(hr)].apply(lambda dt: datetime.datetime(dt.year,
+                                                                                                 dt.month,
+                                                                                                 dt.day,
+                                                                                                 dt.hour,
+                                                                                                 0,0))
+
     X_real_time_predictions = prediction_df[cols_to_keep].values
