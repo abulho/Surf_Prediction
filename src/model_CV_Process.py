@@ -14,6 +14,7 @@ from sklearn.ensemble import (GradientBoostingRegressor,
                               AdaBoostClassifier,
                               RandomForestClassifier)
 import time
+import multiprocessing as mp
 
 def make_cv_data_sets(dataframe, cols_to_keep, allyrs):
     X_train_sets = []
@@ -30,7 +31,7 @@ def make_cv_data_sets(dataframe, cols_to_keep, allyrs):
         y_test_sets.append(y_test)
     return X_train_sets, y_train_sets, X_test_sets, y_test_sets
 
-def grid_fit(x_train, y_train, x_test, y_test, param_grid):
+def grid_fit(x_train, y_train, x_test, y_test, param_grid, set_num):
 
         models = [GradientBoostingRegressor(n_estimators = 10000,
                                             max_depth = td,
@@ -67,7 +68,7 @@ def grid_fit(x_train, y_train, x_test, y_test, param_grid):
                                                                                                          y_pred[0]),
                                                                                              model.loss_(y_test,
                                                                                                          y_pred[1]))
-        return train_scores, test_scores
+        return train_scores, test_scores, set_num
 
 if __name__ == '__main__':
     start = time.time()
@@ -85,6 +86,7 @@ if __name__ == '__main__':
 
     param_grid = {'tree_depth':[3,5,7]}
     processes = [mp.Process(target = grid_fit,
-                            args=(x_train, y_train, x_test, y_test, param_grid))
-                            for x_train, y_train, x_test, y_test in zip(X_train_sets, y_train_sets, X_test_sets, y_test_sets)]
+                            args=(data[0], data[1], data[2], data[3], param_grid, set_num))
+                            for set_num, data in enumerate(zip(X_train_sets, y_train_sets, X_test_sets, y_test_sets))]
+
     print(time.time()-start)
