@@ -22,11 +22,11 @@ def model(X_train, y_train):
     gradient boosted regressor model that is fit
 
     '''
-    n_estimators = 100
+    n_estimators = 20000
     params = {'n_estimators': n_estimators,
               'max_depth': 5,
               'min_samples_split': 4,
-              'learning_rate': 0.0001,
+              'learning_rate': 0.001,
               'loss': 'ls'}
 
     gbr = GradientBoostingRegressor(**params)
