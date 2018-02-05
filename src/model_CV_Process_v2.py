@@ -16,7 +16,7 @@ def model_grid_search(X_train, y_train):
                                scoring="neg_mean_squared_error",
                                n_jobs=-1,
                                cv=kfold,
-                               verbose=1)
+                               verbose=3)
 
     grid_search.fit(X_train, y_train.ravel())
 
