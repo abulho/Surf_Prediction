@@ -1,4 +1,5 @@
 from get_prediction_data import *
+import datetime
 import pickle
 
 def unpickle_model(pickle_model_name):
@@ -15,6 +16,9 @@ def unpickle_model(pickle_model_name):
     with open(pickle_model_name, 'rb') as f:
         model = pickle.load(f)
     return model
+
+def fit_to_real_time(model_name):
+    print('unpickling and making predictions for {} ...'.format(datecol[i]))
 
 if __name__ == '__main__':
 
@@ -43,27 +47,38 @@ if __name__ == '__main__':
                                                                                                  0,0))
     X_real_time_predictions = prediction_df[cols_to_keep].values
 
-    pkl_lst = ['gbr_hr.pkl','gbr_24hr.pkl']#,'gbr_48hr.pkl','gbr_72hr.pkl',
-               #'gbr_96hr.pkl','gbr_120hr.pkl', 'gbr_144hr.pkl']
+    pkl_lst = ['gbr_hr.pkl','gbr_24hr.pkl','gbr_48hr.pkl','gbr_72hr.pkl',
+               'gbr_96hr.pkl','gbr_120hr.pkl', 'gbr_144hr.pkl']
 
-    datecol = ['hr', 'hr_24']#, 'hr_48', 'hr_72', 'hr_96', 'hr_120', 'hr_144']
+    datecol = ['hr', 'hr_24', 'hr_48', 'hr_72', 'hr_96', 'hr_120', 'hr_144']
+
+    date_today = datetime.datetime.now().date() # gives todays date
+    tdel = [0, 24, 48, 72, 96, 120, 144] # hours of predictions
+
     df_lst_7day_pred = []
     for i, model in enumerate(pkl_lst):
 
-        print('unpickling and makeing predictions for {} ...'.format(datecol[i]))
+        print('unpickling and making predictions for {} ...'.format(datecol[i]))
+
+        t_parse = (date_today + datetime.timedelta(tdel[i]/24)).strftime('%Y%m%d')
 
         date_col = 'time_y_' + datecol[i]
-
         gbr = unpickle_model(model)
         y_hat = gbr.predict(X_real_time_predictions)
-
         df = prediction_df[[date_col]]
         df['yhat'] = y_hat
         df['offshore_date'] = df.index
         df.index = df[date_col]
-        df_lst_7day_pred.append(df)
+
+        if i == 0:
+            df_2_app = df[:t_parse]
+        else:
+            df_2_app = df[t_parse:]
+
+        df_lst_7day_pred.append(df_2_app)
 
     print('Saving Predictions...')
 
     df_7day_pred = pd.concat(df_lst_7day_pred, axis=0)
+    df_7day_pred .index.name='Date'
     df_7day_pred.to_csv('predictions_7days.csv')

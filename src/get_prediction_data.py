@@ -116,7 +116,7 @@ if __name__ == '__main__':
     predict_hrs = [hr for hr in range(24,166,24)]
     for hr in predict_hrs:
         prediction_df['time_delta_{}'.format(str(hr))] = prediction_df['t_arrive'].apply(lambda x: datetime.timedelta((x+hr)/24))
-        prediction_df['time_y_{}'.format(str(hr))] = prediction_df.index + data_train_46059_t['time_delta_{}'.format(hr)]
+        prediction_df['time_y_{}'.format(str(hr))] = prediction_df.index + prediction_df['time_delta_{}'.format(hr)]
         prediction_df['time_y_hr_{}'.format(hr)]  = prediction_df['time_y_{}'.format(hr)].apply(lambda dt: datetime.datetime(dt.year,
                                                                                                  dt.month,
                                                                                                  dt.day,
