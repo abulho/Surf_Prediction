@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Surf Predictor Dashboard</title>
+  <meta name="description" content="Surf Prediction Dashboard">
+  <meta name="author" content="Sol Joven">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<style>
+.propClass{
+    max-width: 100%;
+}
+.container{
+    max-width: 100%;
+}
+</style>
+
+<style type="text/css">
+.jumbotron{
+  margin-top: 20px;
+  background-image: url("../static/banner.jpg");
+  background-size: 100% 100%;
+  color: blue;
+  text-align: right;
+}
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 style=" align-content: center ;">Surf Prediction Dashboard</h1>
+    </div>
+  </div>
+
+  <div class="container">
+      <a class="weatherwidget-io" href="https://forecast7.com/en/37d77n122d42/san-francisco/" data-label_1="SAN FRANCISCO" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
+      <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+      </script>
+  </div>
+
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .fit { /* set relative picture size */
+        max-width: 95%;
+        max-height: 95%;
+      }
+      .right {
+        display: block;
+        margin: auto;
+      }
+
+    </style>
+
+  <div class="container">
+    <img class="right fit" src="../static/DASH_BOARD.png"  align="center">
+  </div>
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" language="JavaScript">
+    function set_body_height() { // set body height = window height
+      $('body').height($(window).height());
+    }
+    $(document).ready(function() {
+      $(window).bind('resize', set_body_height);
+      set_body_height();
+    });
+  </script>
+
+
+</body>
+</html>
