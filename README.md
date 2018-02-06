@@ -11,7 +11,7 @@ I used the NDBC API and gathared wave data from a number of buoys along the Cali
 For this project I chose Ocean Beach, a famous surf beach located along the  San Francisco shoreline. Figure X shows the location of the Beach. The traning and testing data was develope in combination of the offshore wave buoy(A) and nearshore wave buoy(B).
 
 ### DATA CLEANING AND PREPARING FOR TRAINING
-![alt text](https://github.com/abulho/Surf_Prediction/img/Screen Shot 2018-02-06 at 3.08.51 PM.png)
+![alt text](https://github.com/abulho/Surf_Prediction/img/ocean_beach.png)
 
 
 
