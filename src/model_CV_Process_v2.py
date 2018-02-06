@@ -7,7 +7,7 @@ from sklearn.externals import joblib
 
 def model_grid_search(X_train, y_train):
     model = GradientBoostingRegressor()
-    n_estimators = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 50000, 60000]
+    n_estimators  = [6000, 7000, 8000, 9000, 10000, 20000, 30000, 50000, 60000, 100000]
     learning_rate = [0.00001, 0.0001, 0.001, 0.01, 0.1]
     param_grid = dict(learning_rate=learning_rate, n_estimators=n_estimators)
     kfold = KFold(n_splits=12, shuffle=False)
