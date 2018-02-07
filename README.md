@@ -37,9 +37,16 @@ In order to see how the model perfoms on more recent data, I predicted two 7 day
 
 ## FINAL PRODUCT
 
-The final product for this project will be a dash board which shows the wave height predictions for 5 days into the future, ie a five day forecast. For this I developed a web site to host this dash board for anyone to visit, and look at the future surf conditions at Ocean Beach, San Francisco. Figure below shows the website.
+The final product for this project will be a dash board which shows the wave height predictions for 5 days into the future, ie a five day forecast. Figure below shows an example of the bash board.
 
 ![Title](img/Example_Dash_Board_02052018.png)
+
+Finally I developed a web site to host this dash board for anyone to visit, and look at the future surf conditions at Ocean Beach, San Francisco. Figure below shows  a screen shot of the website. The site is hosted at www.surf-luv.com. 
+Please visit the website and take a look.
+
+
+
+
 
 
 
