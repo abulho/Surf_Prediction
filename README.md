@@ -46,8 +46,9 @@ Please visit the website and take a look.
 
 ![Title](img/screen_shot_web.png)
 
+## FUTURE WORK
 
-
+For future work I plan on expanding the surf prediction application to other surf locations along the California, Oregon and Washington. Also I am exploring applying machine learning for surf predictions for surf locations in Hawaii.
 
 
 
