@@ -29,6 +29,10 @@ After the data cleaning, 11 years of data was selected for traning and testing p
 
 The above figure, shows that the model had learned to pick up on the wave height predictions at the onshore location(Ocean Beach), based on offshore buoy data, to a certain degree of accuracy. The root mean square error for the model is 0.3 m. The wave heights in the data range from ~ 1 m to ~ 8 m with a mean of ~ 3 m.
 
+In order to see how the model perfoms on more recent data, I predicted two 7 days periods in early January. First figure below shows the model predictions and actual observation for a 7 day period from Jan 07 - 2018 to Jan  10 - 2018. The second figure below shows the model predictions and actual observation for a 7 day period from Jan 23 - 2018 to Jan 30 - 2018. From both figures, it can be seen that the model is doing a OK job at predicting the wave heights at Ocean Beach.
+
+
+
 
 
 
