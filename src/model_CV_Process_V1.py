@@ -1,33 +1,12 @@
-from xgboost import XGBRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
 import pandas as pd
-import matplotlib
 import numpy as np
-import time
-import multiprocessing as mp
-import warnings
-warnings.filterwarnings("ignore")
-from sklearn.externals import joblib
 
-def run_grid_search(X_train, y_train):
-    model = XGBRegressor()
-    n_estimators = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
-    learning_rate = [0.0001, 0.001, 0.01, 0.1]
-    param_grid = dict(learning_rate=learning_rate, n_estimators=n_estimators)
-    kfold = KFold(n_splits=12, shuffle=False)
-    grid_search = GridSearchCV(model,
-                               param_grid,
-                               scoring="neg_mean_squared_error",
-                               n_jobs=-1,
-                               cv=kfold,
-                               verbose=1)
-
-    grid_search.fit(X_train, y_train)
-
-    joblib.dump(grid_search, 'grid_search_all.pkl')
-    joblib.dump(grid_search.best_estimator_, 'grid_search_best.pkl')
-    return grid_search
+#import pandas as pd
+#import numpy as np
+#from sklearn.externals import joblib
 
 def get_train_test_for_cv(dataframe, cols_to_keep, train_yrs):
     '''
@@ -53,16 +32,8 @@ def get_train_test_for_cv(dataframe, cols_to_keep, train_yrs):
          train_lst.append(dfXy[dfXy['YY_x'] == year])
     train_df = pd.concat(train_lst, axis=0)
 
-    #test_lst = []
-    #for year in test_yrs:
-         #test_lst.append(dfXy[dfXy['YY_x'] == year])
-    #test_df = pd.concat(test_lst, axis=0)
-
     X_train = train_df.values[:,:-1]
     y_train = train_df.values[:,-1:]
-
-    #X_test = test_df.values[:,:-1]
-    #y_test = test_df.values[:,-1:]
 
     return X_train, y_train
 
@@ -70,7 +41,7 @@ def get_Xy_data_for_cv(filename):
     data = pd.read_csv(filename)
     return data
 
-if __name__ == "__main":
+if __name__ == "__main__":
     filename = 'data_X_y_46059_hr.csv'
     Xy_df = get_Xy_data_for_cv(filename)
 
@@ -82,3 +53,17 @@ if __name__ == "__main":
     X_train, y_train = get_train_test_for_cv(Xy_df, cols_to_keep, train_yrs)
 
     run_grid_search(X_train, y_train)
+
+    model = GradientBoostingRegressor()
+    n_estimators = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+    learning_rate = [0.0001, 0.001, 0.01, 0.1]
+    param_grid = dict(learning_rate=learning_rate, n_estimators=n_estimators)
+    kfold = KFold(n_splits=12, shuffle=False)
+    grid_search = GridSearchCV(model,
+                               param_grid,
+                               scoring="neg_mean_squared_error",
+                               n_jobs=-1,
+                               cv=kfold,
+                               verbose=1)
+
+    grid_search.fit(X_train, y_train)
