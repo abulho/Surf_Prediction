@@ -44,6 +44,8 @@ The final product for this project will be a dash board which shows the wave hei
 Finally I developed a web site to host this dash board for anyone to visit, and look at the future surf conditions at Ocean Beach, San Francisco. Figure below shows  a screen shot of the website. The site is hosted at www.surf-luv.com. 
 Please visit the website and take a look.
 
+![Title](img/screen_shot_web.png)
+
 
 
 
