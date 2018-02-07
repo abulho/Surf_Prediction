@@ -8,6 +8,8 @@ The main source of data for this project is National Data Buoy Center(NDBC) of U
 
 I used the NDBC API and gathared wave data from a number of buoys along the California coast and offshore in the Pacific Ocean.In order to get an idea of which buoys have the most complete data sets with minimal missing data I created a heat map whcih shows the percentage of missing data for each buoy. The figure below shows the heat map. Vertical axis shows the buoys and the horizontal axis shows some of the predictors that will be used to train/test the model. 
 
+![Title](img/Figure_Percentage_Missing.png)
+
 For this project I chose Ocean Beach, a famous surf beach located along the  San Francisco shoreline. Figure below shows the location of the Beach. The traning and testing data was develope in combination of the offshore wave buoy(A) and nearshore wave buoy(B).
 
 ![Title](img/ocean_beach.png)
