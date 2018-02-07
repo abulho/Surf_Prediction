@@ -16,7 +16,7 @@ The figure above helped me in pin pointing a couple of buoys with which to move 
 
 ### DATA CLEANING AND PREPARING FOR TRAINING
 
-![Title](img/ocean_beach.png)
+![Title](img/WavelagDemo.png)
 
 
 
