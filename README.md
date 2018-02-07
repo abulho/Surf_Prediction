@@ -10,7 +10,7 @@ I used the NDBC API and gathared wave data from a number of buoys along the Cali
 
 ![Title](img/Figure_Percentage_Missing.png)
 
-For this project I chose Ocean Beach, a famous surf beach located along the  San Francisco shoreline. Figure below shows the location of the Beach. The traning and testing data was develope in combination of the offshore wave buoy(A) and nearshore wave buoy(B).
+The figure above helped me in pin pointing a couple of buoys with which to move forward with the project. To this end, I chose Buoy 46059(A) and Buoy 46026(B). Figure below shows the location of these two buoys. Both are located off the coast of San Francisco shoreline.  Buoy A is located about 650 km off the coastline and buoy B is located close to Ocean Beach, a famous surf beach located along the  San Francisco shoreline. Figure below shows the location of the Beach. 
 
 ![Title](img/ocean_beach.png)
 
