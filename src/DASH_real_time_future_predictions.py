@@ -22,7 +22,7 @@ bar_yy = bar_yy.interpolate(method='linear', axis=0).bfill()
 def make_plot_times():
     dt = datetime.now().date()
     time_start = dt + timedelta(hours = 0)
-    time_end = dt + timedelta(hours = 144)
+    time_end = dt + timedelta(hours = 168)
 
     return time_start, time_end
 
@@ -92,6 +92,7 @@ def make_dash_board():
     ax.spines['left'].set_color('blue')
     plt.tight_layout()
     plt.savefig('../FlaskApp/surfapp-1/static/DASH_BOARD.png')
+    #plt.savefig('../FlaskApp/surfapp-1/static/DASH_BOARD.png')
 
     print('Complete.')
 
