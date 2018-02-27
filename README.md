@@ -44,8 +44,11 @@ The final product for this project will be a dash board which shows the wave hei
 Finally I developed a web site to host this dash board for anyone to visit, and look at the future surf conditions at Ocean Beach, San Francisco. Figure below shows  a screen shot of the website. The site is hosted at www.surf-luv.com. 
 Please visit the website and take a look.
 
+![Title](img/screen_shot_web.png)
 
+## FUTURE WORK
 
+For future work I plan on expanding the surf prediction application to other surf locations along the California, Oregon and Washington. Also I am exploring applying machine learning for surf predictions for surf locations in Hawaii.
 
 
 
